@@ -8,11 +8,14 @@ from django.contrib.auth.models import User
 from .forms import CreateNewUser, EditProfile
 from .models import UserProfile, Follow
 from App_Posts.forms import PostForm 
-
+import App_Posts
 
 
 
 def sign_Up(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return HttpResponseRedirect(reverse('App_Posts:home'))
+        
     form = CreateNewUser()
     registered = False
     if request.method == 'POST':
@@ -35,6 +38,9 @@ def sign_Up(request):
 
 
 def login_Page(request):
+    if request.user.is_authenticated and request.user.is_active:
+        return HttpResponseRedirect(reverse('App_Posts:home'))
+
     form = AuthenticationForm()
 
     if request.method == 'POST':
