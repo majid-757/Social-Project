@@ -1,5 +1,5 @@
-A small project like Instagram
+# A small project like Instagram
 
-Made with Django
+Technologies used : Python - Django - Bootstrap
 
 visit : https://mrmajid.pythonanywhere.com/
